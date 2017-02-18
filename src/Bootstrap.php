@@ -26,8 +26,12 @@ if ($environment !== 'production') {
 }
 $whoops->register();
 
-$request = new HttpRequest($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
-$response = new HttpResponse();
+$injector = include('Dependencies.php');
+
+/** @var HttpRequest $request */
+$request = $injector->make('Http\HttpRequest');
+/** @var HttpResponse $response */
+$response = $injector->make('Http\HttpResponse');
 
 foreach ($response->getHeaders() as $header) {
     header($header, false);
@@ -58,7 +62,8 @@ switch ($routeInfo[0]) {
         $method = $routeInfo[1][1];
         $vars = $routeInfo[2];
 
-        $class = new $className;
+        $class = $injector->make($className);
         $class->$method($vars);
         break;
 }
+echo $response->getContent();
