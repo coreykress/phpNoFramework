@@ -4,22 +4,27 @@ namespace phpNoFramework\Controllers;
 
 use Http\Request;
 use Http\Response;
+use phpNoFramework\Template\Renderer;
 
 class Homepage
 {
     private $response;
     private $request;
+    private $renderer;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct(Request $request, Response $response, Renderer $renderer)
     {
         $this->response = $response;
         $this->request = $request;
+        $this->renderer = $renderer;
     }
 
     public function show ()
     {
-        $content = '<h1>Hello World</h1>';
-        $content .= 'Hello ' . $this->request->getParameter('name', 'stranger');
-        $this->response->setContent($content);
+        $data = [
+            'name' => $this->request->getParameter('name', 'stranger'),
+        ];
+        $html = $this->renderer->render('Homepage', $data);
+        $this->response->setContent($html);
     }
 }

@@ -15,7 +15,8 @@
     "filp/whoops": "~2.1",
     "patricklouys/http": "~1.4",
     "nikic/fast-route": "^1.2",
-    "rdlowrey/auryn": "^1.4"
+    "rdlowrey/auryn": "^1.4",
+    "mustache/mustache": "^2.11"
   },
   "autoload": {
     "psr-4": {
