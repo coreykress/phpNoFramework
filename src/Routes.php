@@ -4,4 +4,5 @@ namespace phpNoFramework;
 
 return [
     ['GET', '/', ['phpNoFramework\Controllers\Homepage', 'show']],
+    ['GET', '/{slug}', ['phpNoFramework\Controllers\Page', 'show']]
 ];
