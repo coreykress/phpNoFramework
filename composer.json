@@ -12,7 +12,9 @@
   ],
   "require": {
     "php": ">=7.1.0",
-    "filp/whoops": "~2.1"
+    "filp/whoops": "~2.1",
+    "patricklouys/http": "~1.4",
+    "nikic/fast-route": "^1.2"
   },
   "autoload": {
     "psr-4": {
